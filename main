@@ -1,0 +1,25 @@
+function rot13(str) {
+  let decodedBabble = '';
+  let frontAlpha = 'abcdefghijklm'.toUpperCase();
+  let endAlpha = 'nopqrstuvwxyz'.toUpperCase();
+  
+  
+//I am sure that are many better ways as this one took me longer than it probably should have and seems messy - will revisit
+
+
+  for (let i = 0; i < str.length; i += 1) {
+    let letterCode = str[i];
+
+    if (frontAlpha.indexOf(letterCode) >= 0) {
+      decodedBabble += endAlpha[frontAlpha.indexOf(letterCode)];
+    } else if (endAlpha.indexOf(letterCode) >= 0) {
+      decodedBabble += frontAlpha[endAlpha.indexOf(letterCode)];
+    } else {
+      decodedBabble += letterCode;
+    }
+  }
+
+  return decodedBabble;
+}
+
+console.log(rot13("SERR PBQR PNZC"));
